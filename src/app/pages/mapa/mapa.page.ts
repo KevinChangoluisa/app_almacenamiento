@@ -13,6 +13,8 @@ export class MapaPage implements OnInit, AfterViewInit {
 
   latitud: number;
   longitud: number;
+  nombre: string;
+  img: string;
 
   constructor(
     private route: ActivatedRoute
@@ -21,11 +23,10 @@ export class MapaPage implements OnInit, AfterViewInit {
   ngOnInit() {
 
     let geo: any = this.route.snapshot.paramMap.get('geo');
-    geo = geo.split(',');
-    this.latitud = Number(geo[0]);
-    this.longitud = Number(geo[1]);
-    console.log("Lat: " + this.latitud)
-    console.log("Longitud: " + this.longitud)
+    geo = JSON.parse(geo)
+    this.nombre = geo.name;
+    this.latitud = Number(geo.lat);
+    this.longitud = Number(geo.lng);
 
 
   }
@@ -37,7 +38,7 @@ export class MapaPage implements OnInit, AfterViewInit {
       container: 'map', // container id
       style: 'mapbox://styles/mapbox/streets-v11', // style URL
       center: [this.longitud, this.latitud], // starting position [lng, lat]
-      zoom: 9 // starting zoom
+      zoom: 12 // starting zoom
     });
 
     map.on('load', () => {
@@ -47,7 +48,10 @@ export class MapaPage implements OnInit, AfterViewInit {
       new mapboxgl.Marker()
         .setLngLat([this.longitud, this.latitud])
         .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-          .setHTML('<h3>Ubicación</h3><p> Tu estás ubicado aquí</p>'))
+          .setHTML(`
+              <h4>Casa de ${this.nombre}</h4>
+              <img src="${this.img}" width="50%" height="50%"/>
+              `))
         .addTo(map);
 
 
@@ -103,6 +107,6 @@ export class MapaPage implements OnInit, AfterViewInit {
         labelLayerId
       );
     });
-
   }
+
 }

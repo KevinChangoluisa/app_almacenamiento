@@ -13,15 +13,15 @@ import { NavController } from '@ionic/angular';
 export class PrincipalPage implements OnInit {
   usuarios: Observable<any>;
   id: any;
-  ubicaion:string;
+  ubicacion = {};
 
 
 
   constructor(
-    private dataService: DataService, 
+    private dataService: DataService,
     private alertController: AlertController,
     private navCtrl: NavController
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.usuarios = this.dataService.getUsers();
@@ -29,8 +29,15 @@ export class PrincipalPage implements OnInit {
 
   abrir(user) {
     this.presentAlert(user);
-    this.ubicaion=user.address.geo.lat+","+user.address.geo.lng
-    console.log(this.ubicaion)
+    this.ubicacion =
+    {
+      name: user.name,
+      lat: user.address.geo.lat,
+      //photo:user.photo,
+      lng: user.address.geo.lng
+    }
+      ;
+    console.log(JSON.stringify(this.ubicacion))
   }
 
 
@@ -54,7 +61,7 @@ export class PrincipalPage implements OnInit {
           text: 'Ubicacion',
           cssClass: 'secondary',
           handler: () => {
-            this.navCtrl.navigateForward(`/home/principal/mapa/${this.ubicaion}`)
+            this.navCtrl.navigateForward(`/home/principal/mapa/${JSON.stringify(this.ubicacion)}`)
           }
         }, {
           text: 'Ok',
