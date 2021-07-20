@@ -1,3 +1,4 @@
+import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Observable } from 'rxjs';
@@ -11,6 +12,7 @@ import { DataService } from '../services/data.service';
 export class PrincipalPage implements OnInit {
   usuarios: Observable<any>;
   id: any;
+
 
 
   constructor(private dataService: DataService, private alertController: AlertController) { }
@@ -27,10 +29,33 @@ export class PrincipalPage implements OnInit {
   async presentAlert(user) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: user.name,
-      subHeader: user.username,
-      message: `<b>Dirección:</b>${user.address.street},${user.address.city}<br/><b>WEBSITE:</b>${user.website}`,
-      buttons: ['OK']
+      message: `
+      <ion-card-header >
+      <ion-card-title>${user.username}</ion-card-title>
+      <img src="${user.photo}" alt="g-maps" style="border-radius: 2px">
+      </ion-card-header>
+      <ion-card-content>
+      <b>Nombre:</b>${user.name} <br>
+      <b>Email:</b>${user.email}<br>
+      <b>Teléfono:</b>${user.phone}<br>
+      <b>Dirección:</b>${user.address.street}<br>
+
+      </ion-card-content>`,
+      buttons: [
+        {
+          text: 'Ubicacion',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Ok',
+          handler: () => {
+            console.log('Confirm Ok');
+          }
+        }
+      ]
     });
 
     await alert.present();

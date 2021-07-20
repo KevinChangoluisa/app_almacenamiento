@@ -14,18 +14,18 @@
   </ion-header>
 
   <div id="container">
-    <ion-list>
+    <ion-card>
       <ion-item>
-       <ion-input type="text" placeholder="USER" name="usuario" id="usuario"></ion-input>
+        <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+        <ion-input class="item-content-user-password" type="text" placeholder="USER" name="usuario" id="usuario"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="password" placeholder="PASSWORD" name="password" id="password"></ion-input>
-       </ion-item>
-
-         <ion-button (click)="validar()" expand="full" size="large" shape="round">
-           OK
-         </ion-button>
-
-    </ion-list>
-   </div>
+        <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
+        <ion-input class="item-content-user-password" type="password" placeholder="PASSWORD" name="password" id="password"></ion-input>
+      </ion-item>
+      <ion-button (click)="validar()" expand="full" size="large" shape="round">
+        INGRESAR
+      </ion-button>
+    </ion-card>
+  </div>
 </ion-content>

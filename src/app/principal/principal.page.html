@@ -7,11 +7,12 @@
 <ion-content>
   <ion-card>
     <ion-item *ngFor="let user of usuarios | async" (click)="abrir(user)">
-      <ion-label>
+      <ion-label class="my-label">
         <h3>{{user.name}}</h3>
         <p>{{user.email}}</p>
       </ion-label>
-      <ion-label slot="end" text-right>
+      <ion-label>
+        <ion-icon color="primary" name="call-outline"></ion-icon>
         {{user.phone}}
       </ion-label>
     </ion-item>
