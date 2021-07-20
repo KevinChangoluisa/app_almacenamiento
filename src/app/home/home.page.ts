@@ -16,6 +16,9 @@ export class HomePage {
   usuario_: any;
   psw: any;
 
+  tipoPass = "password";
+  tipoIconoPass="eye-outline"
+
   constructor(
     private storage: Storage,
     private alertController: AlertController,
@@ -136,6 +139,15 @@ export class HomePage {
     toast.present();
   }
 
+  showPass() {
+    if (this.tipoPass == "password") {
+      this.tipoPass = "text"
+      this.tipoIconoPass="eye-off-outline"
+    }else{
+      this.tipoPass = "password"
+      this.tipoIconoPass="eye-outline"
+    }
+  }
 
 }
 

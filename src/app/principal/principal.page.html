@@ -1,15 +1,21 @@
-<ion-header class="ionic-text-center">
-  <ion-toolbar>
-    <ion-title>USUARIOS REGISTRADOS</ion-title>
+<ion-header [translucent]="true">
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">
+      USUARIOS REGISTRADOS
+    </ion-title>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content>
   <ion-card>
     <ion-item-sliding *ngFor="let user of usuarios | async">
 
       <ion-item-options side="start">
-        <ion-item-option (click)="favorite()">
+        <ion-item-option (click)="favorite(user)">
           <ion-icon name="information-outline"></ion-icon>
         </ion-item-option>
 

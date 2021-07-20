@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">
       IONIC STORAGE
     </ion-title>
   </ion-toolbar>
@@ -17,11 +17,18 @@
     <ion-card>
       <ion-item>
         <ion-icon slot="start" name="person-circle-outline"></ion-icon>
-        <ion-input class="item-content-user-password" type="text" placeholder="USER" name="usuario" id="usuario"></ion-input>
+        <ion-input class="item-content-user-password" type="text" placeholder="USER" name="usuario" id="usuario">
+        </ion-input>
       </ion-item>
       <ion-item>
         <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
-        <ion-input class="item-content-user-password" type="password" placeholder="PASSWORD" name="password" id="password"></ion-input>
+        <ion-input class="item-content-user-password" type="{{tipoPass}}" placeholder="PASSWORD" name="password"
+          id="password"></ion-input>
+
+        <ion-button color="light" slot="end" (click)="showPass()">
+          <ion-icon name="{{tipoIconoPass}}"></ion-icon>
+        </ion-button>
+
       </ion-item>
       <ion-button (click)="validar()" expand="full" size="large" shape="round">
         INGRESAR

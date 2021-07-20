@@ -21,6 +21,11 @@ const routes: Routes = [
             path: 'mapa/:geo',
             loadChildren: () => import('./pages/mapa/mapa.module').then(m => m.MapaPageModule)
           }
+          ,
+          {
+            path: 'userinformation/:text',
+            loadChildren: () => import('./pages/userinformation/userinformation.module').then(m => m.UserinformationPageModule)
+          }
 
         ]
       }
@@ -30,7 +35,9 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
-  }];
+  }
+]
+  ;
 
 @NgModule({
   imports: [

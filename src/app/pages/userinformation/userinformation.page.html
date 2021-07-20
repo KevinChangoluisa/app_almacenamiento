@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="secondary">
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home/principal"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center">
+      {{user.name}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>
+        Nombre: {{user.name}}
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        Username: {{user.username}}
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        Dirección: {{user.street}}
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        Ciudad: {{user.city}}
+      </ion-label>
+    </ion-item>
+
+
+
+    <ion-item>
+      <ion-label>
+        ZipCode: {{user.zipcode}}
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        Latitud: {{user.geo.lat}}
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        Longitud: {{user.geo.lng}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full" color="warning">
+    Editar
+  </ion-button>
+</ion-content>

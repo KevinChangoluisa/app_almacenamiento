@@ -39,7 +39,7 @@ export class PrincipalPage implements OnInit {
       lng: user.address.geo.lng
     }
       ;
-    console.log(JSON.stringify(this.ubicacion))
+    //console.log(JSON.stringify(this.ubicacion))
   }
 
 
@@ -77,10 +77,22 @@ export class PrincipalPage implements OnInit {
     await alert.present();
 
     const { role } = await alert.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
   }
 
-  favorite(){
+  favorite(user){
+    let usuario = {};
+    usuario={
+      name: user.name,
+      username: user.username,
+      email: user.email,
+      street: user.address.street,
+      suit: user.address.suit,
+      city: user.address.city,
+      zipcode: user.address.zipcode,
+      geo: user.address.geo
+    }
+
+    this.navCtrl.navigateForward(`/home/principal/userinformation/${JSON.stringify(usuario)}`)
 
   }
   share(lat,lng){
