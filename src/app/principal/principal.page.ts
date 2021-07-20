@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { DataService } from '../services/data.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-principal',
@@ -12,10 +13,15 @@ import { DataService } from '../services/data.service';
 export class PrincipalPage implements OnInit {
   usuarios: Observable<any>;
   id: any;
+  ubicaion:string;
 
 
 
-  constructor(private dataService: DataService, private alertController: AlertController) { }
+  constructor(
+    private dataService: DataService, 
+    private alertController: AlertController,
+    private navCtrl: NavController
+    ) { }
 
   ngOnInit() {
     this.usuarios = this.dataService.getUsers();
@@ -23,6 +29,8 @@ export class PrincipalPage implements OnInit {
 
   abrir(user) {
     this.presentAlert(user);
+    this.ubicaion=user.address.geo.lat+","+user.address.geo.lng
+    console.log(this.ubicaion)
   }
 
 
@@ -44,10 +52,9 @@ export class PrincipalPage implements OnInit {
       buttons: [
         {
           text: 'Ubicacion',
-          role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
-            console.log('Confirm Cancel');
+            this.navCtrl.navigateForward(`/home/principal/mapa/${this.ubicaion}`)
           }
         }, {
           text: 'Ok',
