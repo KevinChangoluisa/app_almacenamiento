@@ -26,9 +26,11 @@
     "@capacitor/keyboard": "1.0.2",
     "@capacitor/status-bar": "1.0.2",
     "@ionic-native/core": "^5.34.0",
+    "@ionic-native/social-sharing": "^5.34.0",
     "@ionic/angular": "^5.5.2",
     "@ionic/storage": "^3.0.6",
     "@ionic/storage-angular": "^3.0.6",
+    "cordova-plugin-x-socialsharing": "^6.0.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"

@@ -4,6 +4,7 @@ import { AlertController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { DataService } from '../services/data.service';
 import { NavController } from '@ionic/angular';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @Component({
   selector: 'app-principal',
@@ -20,7 +21,8 @@ export class PrincipalPage implements OnInit {
   constructor(
     private dataService: DataService,
     private alertController: AlertController,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private socialSharing: SocialSharing
   ) { }
 
   ngOnInit() {
@@ -76,6 +78,22 @@ export class PrincipalPage implements OnInit {
 
     const { role } = await alert.onDidDismiss();
     console.log('onDidDismiss resolved with role', role);
+  }
+
+  favorite(){
+
+  }
+  share(lat,lng){
+    let ubicacion ="https://maps.google.com/?q="+lat+","+lng;
+    this.socialSharing.shareViaWhatsApp(ubicacion).then(() => {
+      // Sharing via email is possible
+    }).catch(() => {
+      // Sharing via email is not possible
+    });
+    
+  }
+  unread(){
+
   }
 }
 

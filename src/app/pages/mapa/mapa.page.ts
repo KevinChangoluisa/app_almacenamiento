@@ -50,7 +50,7 @@ export class MapaPage implements OnInit, AfterViewInit {
         .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
           .setHTML(`
               <h4>Casa de ${this.nombre}</h4>
-              <img src="${this.img}" width="50%" height="50%"/>
+              <!---<img src="${this.img}" width="50%" height="50%"/>--->
               `))
         .addTo(map);
 
